@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Section } from "../layout/Section";
 import { NeonGradientCard } from "../magicui/neon-gradient-card";
 import { Gift, Coins, ExternalLink, RefreshCcw, Timer } from "lucide-react";
