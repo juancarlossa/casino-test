@@ -91,9 +91,9 @@ export function Conclusiones () {
       description="Nuestras recomendaciones finales para que disfrutes de una experiencia de juego segura y satisfactoria."
     >
 
-      <div id="conclusiones" className="border border-indigo-700 grid grid-cols-2 gap-6 rounded-xl p-6 shadow-md ">
+      <div id="conclusiones" className="grid grid-cols-1 gap-6 rounded-xl border border-indigo-400 p-6 shadow-md shadow-indigo-600 transition-colors hover:bg-indigo-900 lg:grid-cols-2">
         <div>
-          <h4 className="mb-4 text-md font-semibold">
+          <h4 className="text-md mb-4 font-semibold">
             <CheckCircle className="mr-2 inline-block text-green-600" />
             Ventajas principales de los casinos online
           </h4>
@@ -131,14 +131,14 @@ export function PracticalTips () {
     <Section
       title="Consejos Prácticos para Empezar a Apostar">
       <span id="consejos-practicos" role="img" aria-label="fire">🔥</span>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         {tips.map((tip, idx) => (
-          <div key={idx} className="rounded-xl bg-indigo-900 border border-indigo-400 shadow-md shadow-indigo-600 p-5 hover:scale-105 transition duration-300">
+          <div key={idx} className="rounded-xl border border-indigo-400 bg-indigo-900 p-5 shadow-md shadow-indigo-600 transition duration-300 hover:scale-105">
             <h4 className="mb-2 text-sm font-semibold text-yellow-300">{tip.title}</h4>
             <ul className="space-y-2">
               {tip.points.map((point, i) => (
                 <li key={i} className="flex items-center gap-2 text-xs">
-                  <CheckCircle className=" h-4 w-4 text-green-400" />
+                  <CheckCircle className="h-4 w-4 text-green-400" />
                   <span>{point}</span>
                 </li>
               ))}
@@ -146,7 +146,7 @@ export function PracticalTips () {
           </div>
         ))}
       </div>
-      <div className="mt-6 rounded-lg bg-green-800 border border-indigo-400 shadow-2xl shadow-indigo-600  p-4 text-indigo-200 hover:scale-105 transition duration-300">
+      <div className="mt-6 rounded-lg border border-indigo-400 bg-green-800 p-4 text-indigo-200 shadow-2xl shadow-indigo-600 transition duration-300 hover:scale-105">
         <strong>Recuerda:</strong> <br />
         El objetivo principal es disfrutar de la experiencia de manera responsable. Los casinos online con dinero real ofrecen entretenimiento de calidad cuando se abordan con la actitud y conocimientos adecuados.
       </div>
@@ -205,13 +205,13 @@ export function RecomendacionesFinales () {
       <article id="recomendaciones-finales" className="space-y-6">
 
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
           {casinos.map((casino) => (
             <MagicCard key={casino.rank} className="duration-400 flex h-[300px] transform flex-col items-center justify-between rounded-lg p-8 transition hover:z-50 hover:scale-105">
 
               <Image src={casino.logo} alt={casino.name} width={100} height={40} />
               <div className="flex w-full flex-col gap-y-3">
-                <div className="text-muted-foreground text-sm flex items-start gap-x-1">
+                <div className="text-muted-foreground flex items-start gap-x-1 text-sm">
                   <p>Rating: {casino.rating} </p>
                   <StarSvg />
                 </div>
@@ -232,6 +232,6 @@ export function RecomendacionesFinales () {
 
 export function StarSvg () {
   return (
-    <Star className="h-4 w-4 text-yellow-400 pt-[3px]" fill="oklch(85.2% 0.199 91.936)" />
+    <Star className="h-4 w-4 pt-[3px] text-yellow-400" fill="oklch(85.2% 0.199 91.936)" />
   )
 }

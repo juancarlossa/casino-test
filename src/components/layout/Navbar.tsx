@@ -172,8 +172,8 @@ export function Navbar ({ className }: { className?: string }) {
           <SheetTitle>Casino</SheetTitle>
           <div className="grid gap-6 p-6">
 
-            {menuItems.map((item) =>
-              <React.Fragment key={item.id}>
+            {menuItems.map((item, index) =>
+              <React.Fragment key={index}>
                 <Link
                   href={item.url}
                   className="text-sm font-bold"

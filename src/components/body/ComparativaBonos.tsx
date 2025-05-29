@@ -89,32 +89,39 @@ export function ComparativaBonos () {
         </div>
 
         {bonosVisibles.map((casino) => (
-          <Fragment key={casino.nombre}>
+          <div key={casino.nombre} className="">
+            {/*logo VERSION MOVIL*/}
+            <div className="relative mx-auto mb-3 mt-8 h-[40px] w-full items-center justify-center md:hidden">
+              <Image src={casino.logo} alt={casino.nombre} fill className="object-contain" />
+            </div>
+            {/*logo VERSION MOVIL*/}
             <div
 
-              className="grid grid-cols-6 items-center justify-center gap-4 border-t px-4 py-4 dark:border-slate-800"
+              className="grid grid-cols-4 items-center justify-center gap-4 border-t px-4 py-4 dark:border-slate-800 lg:grid-cols-6"
             >
-              <div className="flex items-center gap-2 justify-center">
-                <Image src={casino.logo} alt={casino.nombre} width={40} height={40} />
+              {/*VERSION PC*/}
+              <div className="size-full relative hidden items-center justify-center md:block">
+                <Image src={casino.logo} alt={casino.nombre} fill className="object-contain" />
               </div>
+              {/*VERSION PC*/}
 
               <div className="flex flex-col items-center justify-center">
                 <p className="font-semibold">{casino.bono}</p>
-                <p className="text-muted-foreground text-xs">{casino.detalle}</p>
+                <p className="text-muted-foreground text-center text-xs">{casino.detalle}</p>
               </div>
 
               <p className="text-center">{casino.giros}</p>
               <p className="text-center">{casino.requisitos}</p>
               <p className="text-center">{casino.tiempo}</p>
-              <ShinyButton className="hidden md:block hover:shadow-xs duration-400 transform bg-gradient-to-br from-amber-700 to-indigo-600 shadow-[#FE8BBB] transition hover:from-amber-500">
+              <ShinyButton className="hover:shadow-xs duration-400 hidden transform bg-gradient-to-br from-amber-700 to-indigo-600 shadow-[#FE8BBB] transition hover:from-amber-500 md:block">
                 {casino.nombre}
               </ShinyButton>
 
             </div>
-            <ShinyButton className="block w-full md:hidden hover:shadow-xs duration-400 transform bg-gradient-to-br from-amber-700 to-indigo-600 shadow-[#FE8BBB] transition hover:from-amber-500">
+            <ShinyButton className="hover:shadow-xs duration-400 block w-full transform bg-gradient-to-br from-amber-700 to-indigo-600 shadow-[#FE8BBB] transition hover:from-amber-500 md:hidden">
               Ir a {casino.nombre}
             </ShinyButton>
-          </Fragment>
+          </div>
         ))}
 
       </NeonGradientCard>
