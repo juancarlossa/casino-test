@@ -178,7 +178,7 @@ const faqData = [
   },
 ];
 
-export function AccordionFAQ () {
+function AccordionFAQ () {
   return (
     <Accordion
       type="single"
