@@ -34,8 +34,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new Error("Contraseña incorrecta");
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { password : _password, ...userWithoutPassword } = user;
+
+        const userWithoutPassword = {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          // Excluyes password a propósito
+        };
+
 
         return {
           ...userWithoutPassword,

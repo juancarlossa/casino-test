@@ -3,6 +3,7 @@ import { ParticlesFull } from "@/components/juankui/particles";
 import { FormSubmitLogin } from "./form-submit";
 import { auth } from "@/auth";
 import { User } from "@/generated/prisma";
+import { prisma } from "@/lib/prisma";
 
 export default async function LoginPage () {
   const session = await auth()
