@@ -87,7 +87,7 @@ export function AppSidebar () {
             <SidebarMenu>
               <SidebarMenuItem >
                 <SidebarMenuButton asChild>
-                  <Link href="/#home" className="bg-yellow-400/10">
+                  <Link href="/#home" className="bg-card-contacto">
                     <Home />
                     <span className="text-xs">Home</span>
                   </Link>

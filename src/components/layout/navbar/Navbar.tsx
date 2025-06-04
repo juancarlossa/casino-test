@@ -1,12 +1,13 @@
-"use client";
-import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem } from "../ui/navbar-menu";
+import { HoveredLink, MenuItem } from "../../ui/navbar-menu";
 import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
-import { Button } from "../ui/button";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../../ui/sheet";
+import { Button } from "../../ui/button";
 import Link from "next/link";
 import { LucideIcon, MenuIcon } from "lucide-react";
 import { items, menuItems } from "@/lib/links";
+import { SignInOutButton } from "@/app/login/sign-in-out-button";
+import { NavItems } from "./nav-items";
+import { Fragment } from "react";
 
 export interface MenuItem {
   id?: string;
@@ -19,23 +20,11 @@ export interface MenuItem {
 
 
 export function Navbar ({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
   return (
     <div
-      className={cn("fixed px-5 z-50 self-end bg-transparent text-sm text-white", className)}
+      className={cn("fixed flex flex-row items-center justify-center space-x-5 px-5 z-50 self-end bg-transparent text-sm text-white", className)}
     >
-      <Menu setActive={setActive}>
-        <MenuItem setActive={setActive} active={active} item="Servicios">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Web Development</HoveredLink>
-            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-            <HoveredLink href="/branding">Branding</HoveredLink>
-          </div>
-        </MenuItem>
-        <HoveredLink href="/about ">Sobre Nosotros</HoveredLink>
-        <HoveredLink href="/contacto ">Contacto</HoveredLink>
-      </Menu>
+      <NavItems />
 
       {/* VERSION MOVIL */}
       <Sheet>
@@ -50,7 +39,7 @@ export function Navbar ({ className }: { className?: string }) {
           <div className="grid gap-6 p-6">
 
             {menuItems.map((item, index) =>
-              <React.Fragment key={index}>
+              <Fragment key={index}>
                 <Link
                   href={item.url}
                   className="text-sm font-bold"
@@ -66,11 +55,11 @@ export function Navbar ({ className }: { className?: string }) {
                   </div>
                 ))}
 
-              </React.Fragment>
+              </Fragment>
             )}
             <div className="border bg-yellow-400" />
             {items.map((item, index) =>
-              <React.Fragment key={index}>
+              <Fragment key={index}>
                 <Link
                   href={item.url}
                   className="text-sm font-bold"
@@ -86,11 +75,13 @@ export function Navbar ({ className }: { className?: string }) {
                   </div>
                 ))}
 
-              </React.Fragment>
+              </Fragment>
             )}
           </div>
         </SheetContent>
       </Sheet>
+
+      <SignInOutButton />
     </div>
   );
 }

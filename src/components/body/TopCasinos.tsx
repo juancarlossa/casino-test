@@ -54,7 +54,6 @@ export function TopCasinos () {
       description="Hemos analizado en profundidad las principales plataformas para ayudarte a elegir la que mejor se adapte a tus preferencias."
       gradientBackground="bg-gradient-top"
     >
-
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-5" id="top">
         {casinos.map((casino) => (
           <MagicCard key={casino.rank} className="duration-400 flex h-[300px] transform flex-col items-center justify-between rounded-lg p-8 transition hover:z-50 hover:scale-105">

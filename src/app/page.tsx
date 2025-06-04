@@ -13,15 +13,18 @@ import { Testimonios } from "@/components/body/Testimonios";
 import { TopCasinos } from "@/components/body/TopCasinos";
 import { VentajasJugar } from "@/components/body/VentajasJugar";
 
-export default function Home () {
+export default async function Home () {
   return (
     <div className="flex w-full flex-col items-center justify-center font-[family-name:var(--font-geist-sans)]" id="home">
       <HeroHighlightFull />
 
+
       {/* CAMBIAR WIDHT del contenido SOLO DESDE AQUI */}
       <div className="row-start-2 flex w-full flex-col items-center justify-center gap-y-10 pb-10" >
+
         <TopCasinos />
         <ComparativaBonos />
+
         <IntroCasinos />
         <HistoriaJuegoOnline />
         <MarcoLegal />

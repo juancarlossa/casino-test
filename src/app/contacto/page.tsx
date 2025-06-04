@@ -1,8 +1,6 @@
+"use client"
+
 import { Book, LocationEdit, Mail, Phone } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
 import { IconExclamationCircle } from "@tabler/icons-react";
 import {
   Accordion,
@@ -10,6 +8,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { ContactForm, ContactWrapper } from "@/components/contact-form";
+import { ParticlesFull } from "@/components/juankui/particles";
+
 
 // Componente para icono con fondo redondeado
 function SvgContainer ({ Icon }: { Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> }) {
@@ -23,134 +24,100 @@ function SvgContainer ({ Icon }: { Icon: React.ComponentType<React.SVGProps<SVGS
 // Sección de Información de Contacto
 function ContactInfo () {
   return (
-    <Card className="bg-card-contacto gap-3">
-      <h3 className="text-md text-center font-bold lg:text-2xl">Información de Contacto</h3>
-      <span className="mx-auto h-1 w-24 rounded bg-yellow-400" />
-      <CardContent className="relative">
-        <article className="grid grid-cols-1 items-start justify-start space-y-5 p-5 text-sm lg:grid-cols-2 lg:text-xs">
-          <div className="flex items-start justify-start space-x-3">
-            <SvgContainer Icon={Mail} />
-            <div className="flex flex-col">
-              <p><strong>Correo Electrónico</strong></p>
-              <p>
-                Consultas generales:{" "}
-              </p>
-              <a href="mailto:info@anced.es" className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">info@anced.es</a>
-              <p>
-                Colaboraciones:{" "}
-              </p>
-              <a href="mailto:colaboraciones@anced.es" className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">colaboraciones@anced.es</a>
-            </div>
-          </div>
-
-          <div className="flex items-start space-x-3">
-            <SvgContainer Icon={Phone} />
-            <div>
-              <p><strong>Teléfono</strong></p>
-              <p>Atención al cliente: </p>
-              <p className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">+34 915 553 170</p>
-              <p>Horario: Lunes a Viernes: </p>
-              <p className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">9:00 - 18:00</p>
-            </div>
-          </div>
-
-          <div className="flex items-start space-x-3">
-            <SvgContainer Icon={LocationEdit} />
-            <div>
-              <p><strong>Ubicación</strong></p>
-              <p>Diego de León,</p>
-              <p>50 28006 Madrid,</p>
-              <p>España</p>
-            </div>
-          </div>
-
-          <div className="flex items-start space-x-3">
-            <SvgContainer Icon={Book} />
-            <div>
-              <p><strong>Horario de Atención</strong></p>
-              <p>Lunes a Viernes: </p>
-              <p className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">9:00 - 18:00</p>
-              <p>Sábados: </p>
-              <p className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">10:00 - 14:00</p>
-            </div>
-          </div>
-        </article>
-
-        <div className="flex items-center space-x-3 rounded bg-indigo-600 p-5">
-          <IconExclamationCircle className="stroke-yellow-400" />
-          <div>
-            <p className="font-medium">
-              Nos comprometemos a responder todas las consultas en un plazo máximo de 24 horas laborables.
+    <ContactWrapper
+      title="Información de Contacto"
+    >
+      <article className="flex flex-col items-start justify-start space-y-5 p-5 text-sm lg:grid lg:grid-cols-2 lg:text-xs">
+        <div className="flex items-start justify-start space-x-3">
+          <SvgContainer Icon={Mail} />
+          <div className="flex flex-col">
+            <p><strong>Correo Electrónico</strong></p>
+            <p>
+              Consultas generales:{" "}
             </p>
-            <p className="font-medium">Soporte prioritario para usuarios registrados</p>
+            <a href="mailto:info@anced.es" className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">info@anced.es</a>
+            <p>
+              Colaboraciones:{" "}
+            </p>
+            <a href="mailto:colaboraciones@anced.es" className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">colaboraciones@anced.es</a>
           </div>
         </div>
-      </CardContent>
-    </Card>
-  );
-}
 
-// Sección Formulario de Contacto
-function ContactForm () {
-  return (
-    <Card className="bg-card-contacto gap-3">
-      <h3 className="text-md text-center font-bold lg:text-2xl">Envíanos un mensaje</h3>
-      <span className="mx-auto h-1 w-24 rounded bg-yellow-400" />
+        <div className="flex items-start space-x-3">
+          <SvgContainer Icon={Phone} />
+          <div>
+            <p><strong>Teléfono</strong></p>
+            <p>Atención al cliente: </p>
+            <p className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">+34 915 553 170</p>
+            <p>Horario: Lunes a Viernes: </p>
+            <p className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">9:00 - 18:00</p>
+          </div>
+        </div>
 
-      <CardContent className="space-y-4 p-6">
-        <form className="space-y-4">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Input placeholder="Nombre" />
-            <Input placeholder="Apellidos" />
+        <div className="flex items-start space-x-3">
+          <SvgContainer Icon={LocationEdit} />
+          <div>
+            <p><strong>Ubicación</strong></p>
+            <p>Diego de León,</p>
+            <p>50 28006 Madrid,</p>
+            <p>España</p>
           </div>
-          <Input type="email" placeholder="Correo Electrónico" />
-          <Input placeholder="Asunto" />
-          <Input placeholder="Mensaje" type="" />
-          <div className="flex items-center space-x-2">
-            <Checkbox id="privacy" />
-            <label htmlFor="privacy" className="text-sm">
-              He leído y acepto la política de privacidad y el tratamiento de mis datos personales.
-            </label>
+        </div>
+
+        <div className="flex items-start space-x-3">
+          <SvgContainer Icon={Book} />
+          <div>
+            <p><strong>Horario de Atención</strong></p>
+            <p>Lunes a Viernes: </p>
+            <p className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">9:00 - 18:00</p>
+            <p>Sábados: </p>
+            <p className="pb-1 pl-1 text-sm font-bold text-yellow-400 lg:text-xs">10:00 - 14:00</p>
           </div>
-          <Button type="submit">Enviar Mensaje</Button>
-        </form>
-      </CardContent>
-    </Card>
+        </div>
+      </article>
+
+      <div className="flex items-center space-x-3 rounded bg-indigo-600 p-5">
+        <IconExclamationCircle className="stroke-yellow-400" />
+        <div>
+          <p className="font-medium">
+            Nos comprometemos a responder todas las consultas en un plazo máximo de 24 horas laborables.
+          </p>
+          <p className="font-medium">Soporte prioritario para usuarios registrados</p>
+        </div>
+      </div>
+    </ContactWrapper>
   );
 }
 
 // Sección Ubicación
 function LocationInfo () {
   return (
-    <Card className="bg-card-contacto gap-3 text-sm">
-      <h3 className="text-md text-center font-bold lg:text-2xl">Nuestra Ubicación</h3>
-      <span className="mx-auto h-1 w-24 rounded bg-yellow-400" />
+    <ContactWrapper
+      title="Ubicación"
+    >
+      <p>Visítanos en nuestras oficinas centrales en Madrid.</p>
+      <p>Oficinas Centrales de Anced: Diego de León, 50 28006 Madrid, España</p>
 
-      <CardContent className="space-y-4 p-6">
-        <p>Visítanos en nuestras oficinas centrales en Madrid.</p>
-        <p>Oficinas Centrales de Anced: Diego de León, 50 28006 Madrid, España</p>
+      <div className="flex max-w-[500px] flex-row justify-between">
+        <div>
+          <p><strong>Transporte Público:</strong></p>
+          <ul className="text-muted-foreground">
+            <li>Metro: Gran Vía (L1, L5)</li>
+            <li>Bus: Líneas 1, 2, 46, 74</li>
+          </ul>
 
-        <div className="flex max-w-[500px] flex-row justify-between">
-          <div>
-            <p><strong>Transporte Público:</strong></p>
-            <ul className="text-muted-foreground">
-              <li>Metro: Gran Vía (L1, L5)</li>
-              <li>Bus: Líneas 1, 2, 46, 74</li>
-            </ul>
-
-          </div>
-          <div>
-            <p><strong>Parking Cercano:</strong></p>
-            <ul className="text-muted-foreground">
-              <li>Parking Gran Vía</li>
-              <li>Parking Plaza España</li>
-            </ul>
-          </div>
         </div>
+        <div>
+          <p><strong>Parking Cercano:</strong></p>
+          <ul className="text-muted-foreground">
+            <li>Parking Gran Vía</li>
+            <li>Parking Plaza España</li>
+          </ul>
+        </div>
+      </div>
 
-        <p><strong>Horario de Visitas:</strong> Lunes a Viernes: 10:00 - 17:00 (Cita previa requerida)</p>
-      </CardContent>
-    </Card>
+      <p><strong>Horario de Visitas:</strong> Lunes a Viernes: 10:00 - 17:00 (Cita previa requerida)</p>
+    </ContactWrapper>
   );
 }
 
@@ -180,37 +147,40 @@ const faqData = [
 
 function AccordionFAQ () {
   return (
-    <Accordion
-      type="single"
-      collapsible
-      className="mb-0 flex w-full flex-col rounded-lg bg-gradient-to-br from-zinc-800 to-indigo-950 p-5"
-      defaultValue="item-0"
-    >
-      <h3 className="text-md text-center font-bold lg:text-2xl">Preguntas Frecuentes</h3>
-      <span className="mx-auto my-3 h-1 w-24 rounded bg-yellow-400" />
-      {faqData.map((faq, index) => (
-        <AccordionItem key={index} value={`item-${index}`}>
-          <AccordionTrigger>{faq.question}</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground text-sm">
-            {faq.answer}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
+    <ContactWrapper title="Preguntas Frecuentes">
+      <Accordion
+        type="single"
+        collapsible
+        className="mb-0 flex w-full flex-1 flex-col"
+        defaultValue="item-0"
+      >
+
+        {faqData.map((faq, index) => (
+          <AccordionItem key={index} value={`item-${index}`} className="w-full">
+            <AccordionTrigger>{faq.question}</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground text-sm">
+              {faq.answer}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </ContactWrapper>
   );
 }
 
 
 // Página principal Contacto
 export default function ContactoPage () {
+
   return (
     <div className="w-full bg-gradient-to-r from-indigo-700 to-indigo-950 pt-20">
+
       <div className="mx-auto flex w-[80vw] flex-col space-y-5">
         <div className="flex flex-col space-y-3">
           <h1 className="text-md text-center font-bold lg:text-4xl">Contacto</h1>
           <p className="pb-10 text-center">Estamos aquí para ayudarte. No dudes en contactarnos si tienes alguna pregunta o sugerencia.</p>
         </div>
-
+        <ParticlesFull />
         <section className="mb-10 grid grid-cols-1 gap-10 lg:grid-cols-2">
           <ContactInfo />
           <ContactForm />

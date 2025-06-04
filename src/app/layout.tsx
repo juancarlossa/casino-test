@@ -5,7 +5,9 @@ import { Footer } from "../components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/app-sidebar";
-import { Navbar } from "@/components/layout/Navbar";
+import { Navbar } from "@/components/layout/navbar/Navbar";
+import { SessionProvider } from "next-auth/react";
+import { Toaster } from "@/components/juankui/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,30 +30,33 @@ export default function RootLayout ({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <SessionProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
         >
-          <SidebarProvider>
-            <AppSidebar />
-            <div className="flex flex-1 flex-col">
-              <Navbar className="top-2" />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SidebarProvider>
+              <AppSidebar />
+              <div className="flex flex-1 flex-col">
+                <Navbar className="top-2" />
 
-              <main className="flex-1">
-                {children}
-              </main>
+                <main className="flex-1">
+                  {children}
+                  <Toaster />
+                </main>
 
-              <Footer />
-            </div>
-          </SidebarProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+                <Footer />
+              </div>
+            </SidebarProvider>
+          </ThemeProvider>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }

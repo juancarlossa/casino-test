@@ -1,15 +1,18 @@
 import { ReactNode } from "react";
+import { ParticlesFull } from "../juankui/particles";
 
 interface SectionProps {
   children: ReactNode,
   title: string,
   description?: string,
   gradientBackground?: 'bg-gradient-middle' | 'bg-gradient-top'
+  isParticles?: boolean
 }
 
-export function Section ({ children, title, description, gradientBackground = 'bg-gradient-middle' }: SectionProps) {
+export function Section ({ children, title, description, gradientBackground = 'bg-gradient-middle', isParticles = true }: SectionProps) {
   return (
-    <section className={`${gradientBackground} w-full flex justify-center items-center pt-20`}>
+    <section className={`${gradientBackground} relative w-full flex justify-center items-center pt-20`}>
+      {isParticles && <ParticlesFull color="#53eafd" />}
       <article className="flex w-[90vw] flex-col items-center justify-center space-y-5 lg:w-[60vw]">
         <div>
           <h2 className="text-center text-2xl font-bold leading-tight md:text-3xl">
