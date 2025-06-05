@@ -8,6 +8,7 @@ import { AppSidebar } from "@/components/layout/app-sidebar";
 import { Navbar } from "@/components/layout/navbar/Navbar";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/juankui/toaster";
+import { ViewTransitions } from "next-view-transitions"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,32 +32,36 @@ export default function RootLayout ({
 }>) {
   return (
     <SessionProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+      <ViewTransitions>
+        <html lang="en" suppressHydrationWarning>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased `}
           >
-            <SidebarProvider>
-              <AppSidebar />
-              <div className="flex flex-1 flex-col">
-                <Navbar className="top-2" />
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <SidebarProvider>
+                <AppSidebar />
+                <div className="flex flex-1 flex-col">
+                  <Navbar className="top-2" />
 
-                <main className="flex-1">
-                  {children}
-                  <Toaster />
-                </main>
+                  <main className="flex-1">
 
-                <Footer />
-              </div>
-            </SidebarProvider>
-          </ThemeProvider>
-        </body>
-      </html>
+                    {children}
+                    <Toaster />
+
+                  </main>
+
+                  <Footer />
+                </div>
+              </SidebarProvider>
+            </ThemeProvider>
+          </body>
+        </html>
+      </ViewTransitions>
     </SessionProvider>
   );
 }

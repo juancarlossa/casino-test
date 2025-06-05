@@ -2,7 +2,7 @@
 
 import { signOutUser } from "@/actions/auth"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { Link } from 'next-view-transitions'
 import { useSession } from "next-auth/react"
 import { toast } from "sonner"
 import { useTransition } from "react";

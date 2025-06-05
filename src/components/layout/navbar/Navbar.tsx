@@ -2,7 +2,7 @@ import { HoveredLink, MenuItem } from "../../ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../../ui/sheet";
 import { Button } from "../../ui/button";
-import Link from "next/link";
+import { Link } from 'next-view-transitions'
 import { LucideIcon, MenuIcon } from "lucide-react";
 import { items, menuItems } from "@/lib/links";
 import { SignInOutButton } from "@/app/login/sign-in-out-button";

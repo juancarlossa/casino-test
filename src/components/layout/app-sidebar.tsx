@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/sidebar"
 
 import { items, MenuItem } from "@/lib/links";
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 
 function RenderMenuItems ({ items }: { items: MenuItem[] }) {
   return (
@@ -29,19 +29,19 @@ function RenderMenuItems ({ items }: { items: MenuItem[] }) {
           return (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
-                <a href={item.url}>
+                <Link href={item.url}>
                   <span className="text-xs">{item.title}</span>
-                </a>
+                </Link>
               </SidebarMenuButton>
 
               <SidebarMenuSub>
                 {item.children.map((child) => (
                   <SidebarMenuSubItem key={child.title}>
                     <SidebarMenuSubButton asChild>
-                      <a href={child.url}>
+                      <Link href={child.url}>
                         {child.icon && <child.icon />}
                         <span className="text-xs">{child.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
                 ))}

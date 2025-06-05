@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
-
+import { Link } from 'next-view-transitions'
 
 
 const transition = {
@@ -112,14 +112,16 @@ export const ProductItem = ({
 
 export const HoveredLink = ({
   children,
+  href,
   ...rest
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+}: { href: string } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>) => {
   return (
-    <a
+    <Link
+      href={href}
       {...rest}
       className=""
     >
       {children}
-    </a>
+    </Link>
   );
 };
