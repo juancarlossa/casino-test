@@ -203,6 +203,9 @@
   .bg-card-contacto {
     @apply bg-gradient-to-br from-zinc-800 to-indigo-950;
   }
+  .text-card-contacto {
+    @apply bg-gradient-to-br from-zinc-800 to-indigo-950;
+  }
 }
 
 @layer base {
@@ -215,3 +218,16 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Custom scrollbar styles */ 
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: oklch(0.83 0.171 81.93 / 0.75);
+    border-radius: 4px;
+  }
+  *::-webkit-scrollbar-track {
+    background-color: transparent;
+  }

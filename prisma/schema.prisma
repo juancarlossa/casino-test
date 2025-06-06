@@ -26,3 +26,17 @@ model User {
   password String
   name  String?
 }
+
+model Casino {
+  id    Int     @id @default(autoincrement())
+  name String  @unique
+  imageUrl String?
+  description String?
+  rating Float?
+  bonus String?
+  url String?
+  giros String?
+  requisitos String?
+  tiempo String?
+  createdAt DateTime @default(now())
+}

@@ -97,7 +97,7 @@ export function ComparativaBonos () {
             {/*logo VERSION MOVIL*/}
             <div
 
-              className="grid grid-cols-4 items-center justify-center gap-4 border-t px-4 py-4 dark:border-slate-800 lg:grid-cols-6"
+              className="grid grid-cols-4 items-center justify-center gap-4 border-t border-slate-800 px-4 py-4 lg:grid-cols-6"
             >
               {/*VERSION PC*/}
               <div className="size-full relative hidden items-center justify-center md:block">

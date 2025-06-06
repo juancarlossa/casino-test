@@ -5,9 +5,11 @@ import { Button } from "../../ui/button";
 import { Link } from 'next-view-transitions'
 import { LucideIcon, MenuIcon } from "lucide-react";
 import { items, menuItems } from "@/lib/links";
-import { SignInOutButton } from "@/app/login/sign-in-out-button";
 import { NavItems } from "./nav-items";
 import { Fragment } from "react";
+import { auth } from "@/auth";
+import { SignInOutButton } from "@/app/login/sign-button";
+
 
 export interface MenuItem {
   id?: string;
@@ -17,9 +19,9 @@ export interface MenuItem {
   children?: MenuItem[];
 }
 
-
-
-export function Navbar ({ className }: { className?: string }) {
+export async function Navbar ({ className }: { className?: string }) {
+  const session = await auth()
+  console.log("Session in Navbar: ", session)
   return (
     <div
       className={cn("fixed flex flex-row items-center justify-center space-x-5 px-5 z-50 self-end bg-transparent text-sm text-white", className)}
@@ -81,7 +83,7 @@ export function Navbar ({ className }: { className?: string }) {
         </SheetContent>
       </Sheet>
 
-      <SignInOutButton />
+      <SignInOutButton session={session} />
     </div>
   );
 }

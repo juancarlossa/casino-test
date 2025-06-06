@@ -40,15 +40,15 @@ function InfoCard ({ title, icon: Icon, color, items }: CardProps) {
   const baseColor = {
     green: {
       border: 'border-green-300',
-      bg: 'bg-green-50 dark:bg-green-800/70 hover:dark:bg-green-800',
-      text: 'text-green-700 dark:text-green-100 hover:dark:text-white group-hover:text-white dark:group-hover:text-white/90',
-      itemText: 'text-green-800 dark:text-green-200',
+      bg: 'bg-green-800/70 hover:bg-green-800',
+      text: 'text-green-100 hover:text-white group-hover:text-white group-hover:text-white/90',
+      itemText: 'text-green-200',
     },
     red: {
-      border: 'border-red-200 dark:border-red-500/40',
-      bg: 'bg-red-50 dark:bg-red-800/50 hover:dark:bg-red-900',
-      text: 'text-red-700 dark:text-red-100 group-hover:text-white dark:group-hover:text-white/90',
-      itemText: 'text-red-800 dark:text-red-200',
+      border: 'border-red-500/40',
+      bg: 'bg-red-800/50 hover:bg-red-900',
+      text: 'text-red-100 group-hover:text-white/90',
+      itemText: 'text-red-200',
     },
   }[color];
 
@@ -60,7 +60,7 @@ function InfoCard ({ title, icon: Icon, color, items }: CardProps) {
       </h3>
       <ul className={`space-y-2 ${baseColor?.itemText}`}>
         {items.map((item, i) => (
-          <li key={i} className={`flex items-center gap-2 hover:text-white transition-colors duration-300`}>
+          <li key={i} className={`flex items-center gap-2 transition-colors duration-300 hover:text-white`}>
             <Icon className="h-4 w-4" />
             {item}
           </li>

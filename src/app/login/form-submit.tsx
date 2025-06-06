@@ -45,6 +45,8 @@ export function FormSubmitLogin () {
       } else {
         console.log(result.success)
         router.push('/')
+        router.refresh()
+
         toast.success("Sesión iniciada")
       }
     })

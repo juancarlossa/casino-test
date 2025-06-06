@@ -1,67 +1,72 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer } from "../components/layout/Footer";
-import { ThemeProvider } from "@/components/providers/theme-provider";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import { Navbar } from "@/components/layout/navbar/Navbar";
-import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/juankui/toaster";
-import { ViewTransitions } from "next-view-transitions"
+import { Providers } from "./providers";
+import { Geist, Geist_Mono } from "next/font/google";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
+})
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
+})
 
 export const metadata: Metadata = {
   title: "Casino Anced",
   description: "El mejor casino dinero real",
 };
-
+export const defaultSize = 15
 export default function RootLayout ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <SessionProvider>
-      <ViewTransitions>
-        <html lang="en" suppressHydrationWarning>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Providers>
+          <ResizablePanelGroup
+            direction="horizontal"
+            className="flex max-h-screen overflow-hidden rounded-lg border"
           >
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
+            <ResizablePanel
+              defaultSize={defaultSize}
+              minSize={0}
+              maxSize={20}
+              className="flex flex-col"
             >
-              <SidebarProvider>
-                <AppSidebar />
-                <div className="flex flex-1 flex-col">
-                  <Navbar className="top-2" />
+              <AppSidebar />
+            </ResizablePanel>
 
-                  <main className="flex-1">
+            <ResizableHandle withHandle />
 
-                    {children}
-                    <Toaster />
-
-                  </main>
-
-                  <Footer />
-                </div>
-              </SidebarProvider>
-            </ThemeProvider>
-          </body>
-        </html>
-      </ViewTransitions>
-    </SessionProvider>
+            <ResizablePanel defaultSize={85} className="flex flex-1 flex-col overflow-hidden">
+              <Navbar className="top-2" />
+              <div className="flex-1 overflow-y-auto overflow-x-hidden">
+                <main>
+                  {children}
+                  <Toaster />
+                </main>
+                <Footer />
+              </div>
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        </Providers>
+      </body>
+    </html>
   );
 }

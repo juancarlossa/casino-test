@@ -3,27 +3,34 @@
 import { signOutUser } from "@/actions/auth"
 import { Button } from "@/components/ui/button"
 import { Link } from 'next-view-transitions'
-import { useSession } from "next-auth/react"
 import { toast } from "sonner"
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export function SignOutFormButton () {
   const [isPending, startTransition] = useTransition()
+  const [signText, setSignText] = useState("Sign Out");
   const router = useRouter()
 
   async function handleSignOut (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     startTransition(async () => {
-      await signOutUser();
+      const { success } = await signOutUser();
 
-      // Mostrar el toast ANTES de navegar
-      toast.info("Has cerrado sesión");
+      if (!success) {
+        toast.error("Error al cerrar sesión");
+        return;
+      }
+      setSignText("Sign in");
+      // Mostrar el toast ANTES de navegar para evitar bug
+      toast.info("Has cerrado sesión")
+
+
       // Opcional: esperar un poco para que el toast sea visible
-      setTimeout(() => {
-        router.push("/");
-      }, 500);
+      router.push("/");
+
     });
   }
 
@@ -39,17 +46,5 @@ export function SignInAButton () {
     <Button asChild className="bg-card-contacto">
       <Link href="/login">Sign In</Link>
     </Button>
-  )
-}
-
-export function SignInOutButton () {
-  const { data: session } = useSession()
-
-  if (session) {
-    return <SignOutFormButton />
-  }
-
-  return (
-    <SignInAButton />
   )
 }

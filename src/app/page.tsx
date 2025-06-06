@@ -16,7 +16,7 @@ import { VentajasJugar } from "@/components/body/VentajasJugar";
 export default async function Home () {
   return (
     <div className="flex w-full flex-col items-center justify-center font-[family-name:var(--font-geist-sans)]" id="home">
-      <HeroHighlightFull />
+      {<HeroHighlightFull />}
 
 
       {/* CAMBIAR WIDHT del contenido SOLO DESDE AQUI */}

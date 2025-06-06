@@ -29,7 +29,7 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer hover:opacity-[0.9]"
       >
         {item}
       </motion.p>
@@ -44,7 +44,7 @@ export const MenuItem = ({
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
-                className="overflow-hidden rounded-2xl border border-black/[0.2] bg-white shadow-xl backdrop-blur-sm dark:border-white/[0.2] dark:bg-black"
+                className="bg-card-contacto overflow-hidden rounded-2xl border border-black/[0.2] shadow-xl backdrop-blur-sm"
               >
                 <motion.div
                   layout // layout ensures smooth animation
@@ -71,7 +71,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="shadow-input relative hidden justify-center space-x-4 rounded-full border border-transparent px-8 py-4 backdrop-blur dark:border-white/[0.2] lg:flex"
+      className="shadow-input relative hidden justify-center space-x-4 rounded-full border border-white/[0.2] px-8 py-4 backdrop-blur lg:flex"
     >
       {children}
     </nav>
@@ -99,10 +99,10 @@ export const ProductItem = ({
         className="shrink-0 rounded-md shadow-2xl"
       />
       <div>
-        <h4 className="mb-1 text-xl font-bold text-black dark:text-white">
+        <h4 className="mb-1 text-xl font-bold text-white">
           {title}
         </h4>
-        <p className="max-w-[10rem] text-sm text-neutral-700 dark:text-neutral-300">
+        <p className="max-w-[10rem] text-sm text-neutral-300">
           {description}
         </p>
       </div>

@@ -6,12 +6,13 @@ import { Particles } from "../magicui/particles";
 
 export function ParticlesFull ({ color: _color }: { color?: string }) {
   const { resolvedTheme } = useTheme();
-  const [color, setColor] = useState("#ffffff");
+  const [color, setColor] = useState("#53eafd");
 
+  /*
   useEffect(() => {
-    setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000");
+    setColor(resolvedTheme === "dark" ? "#ffffff" : "#ffffff");
   }, [resolvedTheme]);
-
+*/
   return (
     <Particles
       className="absolute inset-0 z-0"

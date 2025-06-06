@@ -2,9 +2,10 @@
 "use server";
 
 import { signIn, signOut } from "@/auth";
+import { cookies } from "next/headers";
 
 export async function loginUser(formData: FormData) {
-  
+  const cookieStore = await cookies()
   const email = formData.get("email") as string
   const password = formData.get("password") as string
 
@@ -18,6 +19,7 @@ export async function loginUser(formData: FormData) {
     if (!res || res.error) {
       return { error: "Credenciales incorrectas" }
     }
+    cookieStore.set('isLogged', 'true')
 
     return { success: true }
   } catch {
@@ -27,9 +29,18 @@ export async function loginUser(formData: FormData) {
 }
 
 export async function signOutUser() {
-  
-  await signOut({  redirect: false });
+  const cookieStore = await cookies()
 
-  console.log("Te has desconectado");
-  
+  try {
+    await signOut({  redirect: false });
+
+    console.log("Te has desconectado");
+    cookieStore.set('isLogged', 'false')
+
+    return { success: true };
+    
+  } catch (error) {
+    console.error("Error al cerrar sesión:", error);
+    return { error: "Error al cerrar sesión" };
+  }
 }

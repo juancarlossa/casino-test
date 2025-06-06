@@ -4,6 +4,7 @@ import { FormSubmitLogin } from "./form-submit";
 import { auth } from "@/auth";
 import { User } from "@/generated/prisma";
 import { prisma } from "@/lib/prisma";
+import { Span } from "@/components/juankui/span";
 
 export default async function LoginPage () {
   const session = await auth()
@@ -12,7 +13,7 @@ export default async function LoginPage () {
   if (session) {
     return (
       <section className="flex flex-col space-y-5 bg-gradient-to-b from-indigo-800 to-indigo-950 py-20 lg:flex-row">
-        <div className="bg-card-contacto mx-auto w-full max-w-md rounded-none border border-indigo-400 dark:bg-black md:rounded-2xl md:p-8">
+        <div className="bg-card-contacto mx-auto w-full max-w-md rounded-none border border-indigo-400 md:rounded-2xl md:p-8">
           <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
             You are already logged in
           </h2>
@@ -39,12 +40,13 @@ export default async function LoginPage () {
   return (
     <>
       <ParticlesFull />
-      <section id="sobre-nosotros" className="bg-gradient-to-b from-indigo-800 to-indigo-950 py-20">
-        <div className="shadow-input bg-card-contacto mx-auto w-full max-w-md rounded-none border border-indigo-400 dark:bg-black md:rounded-2xl md:p-8">
-          <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
-            Welcome to Aceternity
+      <section id="sobre-nosotros" className="flex h-screen items-center justify-center bg-gradient-to-b from-indigo-800 to-indigo-950">
+        <div className="shadow-input bg-card-contacto mx-auto w-full max-w-md rounded-none border border-indigo-400 md:rounded-2xl md:p-8">
+          <h2 className="text-center text-xl font-bold text-neutral-200">
+            Welcome to Anced
           </h2>
-          <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
+          <Span className="mb-5 mt-3" />
+          <p className="mb-4 mt-2 max-w-sm text-sm text-neutral-300">
             Login to aceternity if you can because we don&apos;t have a login flow
             yet
           </p>

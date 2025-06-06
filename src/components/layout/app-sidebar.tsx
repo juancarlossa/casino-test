@@ -1,6 +1,5 @@
 'use client'
 import { Home } from "lucide-react"
-
 import {
   Sidebar,
   SidebarContent,
@@ -13,10 +12,10 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  SidebarRail,
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar"
-
 import { items, MenuItem } from "@/lib/links";
 import { Link } from 'next-view-transitions';
 
@@ -66,22 +65,24 @@ function RenderMenuItems ({ items }: { items: MenuItem[] }) {
   );
 }
 
+
+
 export function AppSidebar () {
   const { open } = useSidebar()
 
   return (
-    <Sidebar collapsible="icon">
-      {!open && (
-        <SidebarTrigger className="mx-auto mt-5" />
-      )}
 
-      <SidebarContent>
+    <Sidebar collapsible="icon" className="flex h-full flex-col">
+      {!open && (
+        <SidebarTrigger className="mt-5" />
+      )}
+      <SidebarContent >
         <SidebarGroup>
           <div className="flex flex-row items-stretch justify-between py-3">
-            <SidebarGroupLabel>Casino Anced</SidebarGroupLabel>
-            {open && (
-              <SidebarTrigger />
-            )}
+            <SidebarGroupLabel className="truncate">Casino Anced</SidebarGroupLabel>
+            {/*open && (
+                <SidebarTrigger />
+              )*/}
           </div>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -89,7 +90,7 @@ export function AppSidebar () {
                 <SidebarMenuButton asChild>
                   <Link href="/#home" className="bg-card-contacto">
                     <Home />
-                    <span className="text-xs">Home</span>
+                    <span className="truncate text-xs">Home</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -100,5 +101,6 @@ export function AppSidebar () {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
+
   )
 }

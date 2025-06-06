@@ -76,13 +76,12 @@ function ContactInfo () {
         </div>
       </article>
 
-      <div className="flex items-center space-x-3 rounded bg-indigo-600 p-5">
+      <div className="bg-card-contacto flex items-center space-x-3 rounded p-5">
         <IconExclamationCircle className="stroke-yellow-400" />
         <div>
           <p className="font-medium">
-            Nos comprometemos a responder todas las consultas en un plazo máximo de 24 horas laborables.
+            Nos comprometemos a responder todas las consultas en un plazo máximo de 24 horas laborables. Soporte prioritario para usuarios registrados.
           </p>
-          <p className="font-medium">Soporte prioritario para usuarios registrados</p>
         </div>
       </div>
     </ContactWrapper>
