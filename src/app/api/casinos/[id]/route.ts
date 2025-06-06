@@ -3,8 +3,8 @@ import { PrismaClient } from '@/generated/prisma';
 
 const prisma = new PrismaClient();
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
-  const id = parseInt(params.id);
+export async function GET(request: NextRequest) {
+  const id = extractIdFromUrl(request);
 
   if (isNaN(id)) return NextResponse.json({ error: 'ID inválido' }, { status: 400 });
 
@@ -15,8 +15,8 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   return NextResponse.json(casino);
 }
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
-  const id = parseInt(params.id);
+export async function PUT(request: NextRequest) {
+  const id = extractIdFromUrl(request);
 
   if (isNaN(id)) return NextResponse.json({ error: 'ID inválido' }, { status: 400 });
 
@@ -44,8 +44,8 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
-  const id = parseInt(params.id);
+export async function DELETE(request: NextRequest) {
+  const id = extractIdFromUrl(request);
 
   if (isNaN(id)) return NextResponse.json({ error: 'ID inválido' }, { status: 400 });
 
@@ -55,4 +55,9 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
   } catch (error) {
     return NextResponse.json({ error: 'Error eliminando el casino' }, { status: 400 });
   }
+}
+
+function extractIdFromUrl(request: NextRequest): number {
+  const idParam = request.nextUrl.pathname.split('/').pop();
+  return parseInt(idParam || '', 10);
 }
